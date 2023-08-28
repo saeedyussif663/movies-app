@@ -1,6 +1,5 @@
 
 import { useGlobalContext } from "../Context"
-import "./Menu.css"
 
 const Menu = () => {
     const { toggleModal, state } = useGlobalContext();

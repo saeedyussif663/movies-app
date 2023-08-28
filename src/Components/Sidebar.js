@@ -1,25 +1,20 @@
 import { Link, NavLink } from "react-router-dom"
-import "./Sidebar.css"
-import { useGlobalContext } from "../Context"
 
 const SideBar = () => {
-    const { state, toggleModal } = useGlobalContext();
-
-    const sectionDisplay = state.isModalShowing ? "flex" : "none"
 
     return (
-        <section className="sidebar-container" style={{display: sectionDisplay}} >
+        <section className="sidebar-container" >
             <div className="links-container">
-                <NavLink to='/' onClick={toggleModal} activeClassName="active">
+                <NavLink to='/'activeClassName="active">
                     Genres
                 </NavLink>
-                <NavLink to='/movies' onClick={toggleModal}>
+                <NavLink to='/movies'>
                     Movies
                 </NavLink>
-                <NavLink to='/series' onClick={toggleModal}>
+                <NavLink to='/series'>
                     Series
                 </NavLink>
-                <NavLink to='/favourite' onClick={toggleModal}>
+                <NavLink to='/favourite'>
                     Favourite
                 </NavLink>
             </div>
