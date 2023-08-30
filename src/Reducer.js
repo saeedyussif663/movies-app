@@ -35,6 +35,20 @@ export const reducer = (state, action) => {
             genreToDisplay: action.genreNum
         }
     }
-   
+
+    if (action.type === "SINGLEMOVIE") {
+        return {
+            ...state,
+            singleMovie: {...action.data}
+        }
+    }
+
+    if (action.type === "SETCAST") {
+        return {
+            ...state, 
+            cast: [...action.cast]
+        }
+    }
+    
     return state
 }

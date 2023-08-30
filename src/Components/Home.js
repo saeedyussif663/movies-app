@@ -1,11 +1,13 @@
-import { useEffect } from "react";
+import { Link } from "react-router-dom";
+
+
 import { useGlobalContext } from "../Context"
 import Loader from "../Loader";
 
 
 
 const Home = () => {
-    const { state, recieveGenre, } = useGlobalContext();
+    const { state, recieveGenre} = useGlobalContext();
     const { genres, isLoading, moviesGenres , genreToDisplay } = state;
 
 
@@ -33,8 +35,8 @@ const Home = () => {
             <section className="movies-section">
                 {isLoading ? <Loader/> : moviesGenres.map((movie) => {
                     return (
-                        <div key={movie.id} className="movie-container">
-                            <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={movie.title} loading="lazy" />
+                        <Link key={movie.id} to={`/moviedetail/${movie.id}`} className="movie-container">
+                            <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={movie.title} />
                             <div className="favourite-container">
                                 <i className="fa-regular fa-star"></i>
                             </div>
@@ -42,7 +44,7 @@ const Home = () => {
                                 <h1>{movie.title}</h1>
                                 <span>{movie.vote_average}</span>
                             </div>
-                        </div>
+                        </Link>
                     )
                 })}
             </section>

@@ -12,6 +12,8 @@ const initialState = {
     genres: [],
     genreToDisplay: 28,
     moviesGenres: [],
+    singleMovie: {},
+    cast: [],
 }
 
 const AppProvider = ({ children }) => {
@@ -22,6 +24,22 @@ const AppProvider = ({ children }) => {
         const response = await fetch("https://api.themoviedb.org/3/genre/movie/list?api_key=837ddd7bf3645dab7c2e0b4d81c44b22")
         const data = await response.json();
         dispatch({ type: "SETGENRES", data: data.genres });
+        dispatch({ type: "TOGGLELOADER" });
+    }
+
+    const fetchSingleMovie = async (id) => {
+        dispatch({ type: "TOGGLELOADER" });
+        const response = await fetch (`https://api.themoviedb.org/3/movie/${id}?api_key=837ddd7bf3645dab7c2e0b4d81c44b22`)
+        const data = await response.json();
+        dispatch({type: "SINGLEMOVIE", data})
+        dispatch({ type: "TOGGLELOADER" });
+    }
+
+    const fetchCast = async (id) => {
+        dispatch({ type: "TOGGLELOADER" });
+        const response = await fetch (`https://api.themoviedb.org/3/movie/${id}/credits?api_key=837ddd7bf3645dab7c2e0b4d81c44b22`)
+        const data = await response.json();
+        dispatch({type: "SETCAST", cast: data.cast})
         dispatch({ type: "TOGGLELOADER" });
     }
 
@@ -55,7 +73,9 @@ const AppProvider = ({ children }) => {
         <AppContext.Provider value={{
             state,
             toggleModal,
-            recieveGenre 
+            recieveGenre,
+            fetchSingleMovie,
+            fetchCast
         }}>
             {children}
         </AppContext.Provider>

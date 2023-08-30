@@ -4,6 +4,7 @@ import SideBar from "./Components/Sidebar";
 import Home from "./Components/Home";
 import Menu from "./Components/Menu";
 import MobileNav from "./Components/MobileNav";
+import SingleMovie from "./Components/SingleMovie";
 
 
 
@@ -20,6 +21,7 @@ function App() {
         <Route path="/series" element={<h1>series</h1>} />
         <Route path="/favourite" element={<h1>favourite</h1>} />
         <Route path="/login" element={<h1>login</h1>} />
+        <Route path="/moviedetail/:id" element={<SingleMovie/>} />
       </Routes>
     </section>
   );
