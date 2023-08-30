@@ -1,11 +1,12 @@
+import { useEffect } from "react";
 import { useGlobalContext } from "../Context"
 import Loader from "../Loader";
 
 
 
 const Home = () => {
-    const { state } = useGlobalContext();
-    const { genres, isLoading, moviesGenres } = state
+    const { state, recieveGenre, } = useGlobalContext();
+    const { genres, isLoading, moviesGenres , genreToDisplay } = state;
 
 
     return (
@@ -18,15 +19,22 @@ const Home = () => {
             <section className="genres-section">
                 <h1>Genres</h1>
                 {genres.map((genre) => {
-                    return <button className="genres-button" key={genre.id}>{genre.name}</button>
+                    return (
+                        <button
+                            className={genreToDisplay === genre.id ? "genres-button unique-button" : "genres-button"}
+                            key={genre.id}
+                            onClick={() => recieveGenre(genre.id)}
+                        >
+                                {genre.name}
+                        </button>
+                        )
                 })}
             </section>
             <section className="movies-section">
-                {/* {isLoading ? <Loader/> : <h1>movies</h1>} */}
-                {moviesGenres.map((movie) => {
+                {isLoading ? <Loader/> : moviesGenres.map((movie) => {
                     return (
                         <div key={movie.id} className="movie-container">
-                            <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={movie.title} />
+                            <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={movie.title} loading="lazy" />
                             <div className="favourite-container">
                                 <i className="fa-regular fa-star"></i>
                             </div>

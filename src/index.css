@@ -241,6 +241,11 @@ display: flex;
   cursor: pointer;
 }
 
+.unique-button {
+  background-color: white;
+  color: black;
+}
+
 .movies-section {
   width: 100%;
   display: flex;

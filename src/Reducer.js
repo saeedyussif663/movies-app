@@ -28,6 +28,13 @@ export const reducer = (state, action) => {
             moviesGenres: [...action.movies],
         }
     }
+
+    if (action.type === "CHANGEGENRETODISPLAY") {
+        return {
+            ...state,
+            genreToDisplay: action.genreNum
+        }
+    }
    
     return state
 }
