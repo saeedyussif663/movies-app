@@ -5,7 +5,7 @@ const SideBar = () => {
     return (
         <section className="sidebar-container" >
             <div className="links-container">
-                <NavLink to='/'activeClassName="active">
+                <NavLink to='/'>
                     Genres
                 </NavLink>
                 <NavLink to='/movies'>
