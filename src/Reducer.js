@@ -8,10 +8,18 @@ export const reducer = (state, action) => {
        }
     }
     
-    if (action.type === "TOGGLELOADER") {
+    if (action.type === "SETLOADER") {
         return {
             ...state,
-            isLoading: !state.isLoading
+            isLoading: true
+        }
+    }
+
+    
+    if (action.type === "REMOVELOADER") {
+        return {
+            ...state,
+            isLoading: false
         }
     }
 
@@ -46,7 +54,7 @@ export const reducer = (state, action) => {
     if (action.type === "SETCAST") {
         return {
             ...state, 
-            cast: [...action.cast]
+            casts: [...action.cast]
         }
     }
     

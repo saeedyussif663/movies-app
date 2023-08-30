@@ -14,11 +14,12 @@ const SingleMovie = () => {
         fetchCast(id);
     }, [])
 
-    if (state.isLoading) return <Loader/>
 
     return (
-        <section className="singlemovie-container">
-            <div className="img-container">
+        state.isLoading ? <Loader /> : (
+            <section className="singlemovie-container">
+                
+                <div className="img-container">
                 <img src={`https://image.tmdb.org/t/p/original/${backdrop_path}`} alt={title} />
                 <h1>{ title }</h1>
             </div>
@@ -27,8 +28,27 @@ const SingleMovie = () => {
                 <div>
                     <span>Release Date : {release_date}</span>
                 </div>
-            </div>
-        </section>
+                </div>
+                <h1 className="cast-text">Cast</h1>
+            <div className="cast-container">
+                    {state.casts.map((cast) => {
+                        return (
+                            <div key={cast.id} className="single-cast">
+                                <div className="single-cast-img-container">
+                                    <img src={`https://image.tmdb.org/t/p/original/${cast.profile_path}`} alt={cast.name} />
+                                </div>
+                                <div className="single-cast-other-details">
+                                    <h1>{ cast.character }</h1>
+                                    <span>({ cast.name })</span>
+                                </div>
+                            </div>
+                    )
+                    })}
+                </div>
+                <div className="view-homepage">
+                    <a href={homepage} target="_blank" rel="noreferrer">View Homepage</a>
+                </div>
+        </section>)
     )
 }
 
