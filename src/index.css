@@ -333,6 +333,15 @@ display: flex;
   width: 100%;
 }
 
+.img-container > i {
+  background: white;
+  position: absolute;
+  top: 30px;
+  left: 40px;
+  padding: 20px;
+  border-radius: 30px;
+}
+
 .img-container > h1 {
   position: absolute;
   bottom: 8%;
@@ -387,6 +396,7 @@ display: flex;
   flex-direction: row;
   margin-bottom: 20px;
   overflow: auto;
+  scrollbar-width: thin;
 } 
 
 .cast-text {

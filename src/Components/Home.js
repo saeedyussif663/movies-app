@@ -1,8 +1,7 @@
-import { Link } from "react-router-dom";
-
 
 import { useGlobalContext } from "../Context"
 import Loader from "../Loader";
+import Movie from "./Movie";
 
 
 
@@ -34,18 +33,7 @@ const Home = () => {
             </section>
             <section className="movies-section">
                 {isLoading ? <Loader/> : moviesGenres.map((movie) => {
-                    return (
-                        <Link key={movie.id} to={`/moviedetail/${movie.id}`} className="movie-container">
-                            <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={movie.title} />
-                            <div className="favourite-container">
-                                <i className="fa-regular fa-star"></i>
-                            </div>
-                            <div className="movie-details">
-                                <h1>{movie.title}</h1>
-                                <span>{movie.vote_average}</span>
-                            </div>
-                        </Link>
-                    )
+                    return <Movie key={movie.id} {...movie} />
                 })}
             </section>
          </main>
