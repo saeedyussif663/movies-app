@@ -5,6 +5,7 @@ import Home from "./Components/Home";
 import Menu from "./Components/Menu";
 import MobileNav from "./Components/MobileNav";
 import SingleMovie from "./Components/SingleMovie";
+import Trending from "./Components/Trending";
 
 
 
@@ -17,8 +18,8 @@ function App() {
       <MobileNav/>
       <Routes>
         <Route path="/" element={<Home/>} />
-        <Route path="/movies" element={<h1>movies</h1>} />
-        <Route path="/series" element={<h1>series</h1>} />
+        <Route path="/upcoming" element={<h1>Upcoming</h1>} />
+        <Route path="/trending" element={<Trending/>} />
         <Route path="/favourite" element={<h1>favourite</h1>} />
         <Route path="/login" element={<h1>login</h1>} />
         <Route path="/moviedetail/:id" element={<SingleMovie/>} />

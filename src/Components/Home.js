@@ -19,6 +19,7 @@ const Home = () => {
             </section>
             <section className="genres-section">
                 <h1>Genres</h1>
+                <div className="genres-container">
                 {genres.map((genre) => {
                     return (
                         <button
@@ -30,6 +31,7 @@ const Home = () => {
                         </button>
                         )
                 })}
+                </div>
             </section>
             <section className="movies-section">
                 {isLoading ? <Loader/> : moviesGenres.map((movie) => {

@@ -8,11 +8,11 @@ const SideBar = () => {
                 <NavLink to='/'>
                     Genres
                 </NavLink>
-                <NavLink to='/movies'>
-                    Movies
+                <NavLink to='/trending'>
+                    Trending
                 </NavLink>
-                <NavLink to='/series'>
-                    Series
+                <NavLink to='/upcoming'>
+                    Upcoming
                 </NavLink>
                 <NavLink to='/favourite'>
                     Favourite

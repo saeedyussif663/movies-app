@@ -9,7 +9,7 @@ const Movie = ({ id, title, poster_path, vote_average}) => {
             </div> 
             <div className="movie-details">
             <h1>{title}</h1>
-            <span>{vote_average}</span>
+            <span>{vote_average.toFixed(1)}</span>
             </div>
          </Link>
     )

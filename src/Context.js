@@ -13,6 +13,7 @@ const initialState = {
     genreToDisplay: 28,
     moviesGenres: [],
     singleMovie: {},
+    trendingMovies: [],
     casts: [],
 }
 
@@ -60,6 +61,14 @@ const AppProvider = ({ children }) => {
         dispatch({ type: "REMOVELOADER" });
     }
 
+    const fetchTrendingMovies = async () => {
+        dispatch({ type: "SETLELOADER" });
+        const response = await fetch("https://api.themoviedb.org/3/trending/movie/day?api_key=837ddd7bf3645dab7c2e0b4d81c44b22");
+        const data = await response.json();
+        dispatch({type: "SETTRENDINGMOVIE", movies: data.results})
+        dispatch({ type: "REMOVELOADER" });
+    }
+
     useEffect(() => {
         fetchGenres();
         fetchDefaultMovies();
@@ -75,7 +84,8 @@ const AppProvider = ({ children }) => {
             toggleModal,
             recieveGenre,
             fetchSingleMovie,
-            fetchCast
+            fetchCast,
+            fetchTrendingMovies
         }}>
             {children}
         </AppContext.Provider>
