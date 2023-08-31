@@ -13,11 +13,11 @@ const MobileNav = () => {
                 <NavLink to='/' activeClassName="active" onClick={toggleModal}>
                     Genres
                 </NavLink>
-                <NavLink to='/movies'  onClick={toggleModal}>
-                    Movies
+                <NavLink to='/trending'  onClick={toggleModal}>
+                    Trending
                 </NavLink>
-                <NavLink to='/series'  onClick={toggleModal}>
-                    Series
+                <NavLink to='/upcoming'  onClick={toggleModal}>
+                    Upcoming
                 </NavLink>
                 <NavLink to='/favourite'  onClick={toggleModal} >
                     Favourite

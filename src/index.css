@@ -608,4 +608,14 @@ display: flex;
   margin-left: 0;
 }
 
+.trending-movies {
+  margin: 0;
+}
+
+/* upcoming movies */ 
+.upcoming-container {
+  width: 90%;
+  margin: 0px 5%;
+}
+
 }
