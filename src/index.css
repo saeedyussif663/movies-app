@@ -588,6 +588,10 @@ display: flex;
   width: 90%;
 }
 
+.movie-container > a {
+  width: 90%;
+}
+
 .sub-deatils-container > p { 
   width: 90%;
 }

@@ -15,6 +15,7 @@ const initialState = {
     singleMovie: {},
     trendingMovies: [],
     upcomingMovies: [],
+    favouriteMovies: [],
     casts: [],
 }
 
@@ -78,14 +79,33 @@ const AppProvider = ({ children }) => {
         dispatch({ type: "REMOVELOADER" });
     }
 
+    const pushToFavourite = async (id) => {
+        const response = await fetch (`https://api.themoviedb.org/3/movie/${id}?api_key=837ddd7bf3645dab7c2e0b4d81c44b22`)
+        const data = await response.json();
+        if (state.favouriteMovies.length === 0) {
+            dispatch({type: "SETFAVOURITE", movies: data})
+        } else {
+            for (let index = 0; index < state.favouriteMovies.length; index++) {
+                const element = state.favouriteMovies[index];
+                if (element.id === data.id) {
+                    dispatch({type: "REMOVEFAVOURITE", data})
+                } else {
+                    dispatch({type: "SETFAVOURITE", movies: data})
+                }
+                return state
+            }
+        }
+    }
+
+    const toggleModal = () => {
+        dispatch({type: "TOGGLEMODAL"})
+    }
+
     useEffect(() => {
         fetchGenres();
         fetchDefaultMovies();
     }, [])
 
-    const toggleModal = () => {
-        dispatch({type: "TOGGLEMODAL"})
-    }
 
     return(
         <AppContext.Provider value={{
@@ -95,7 +115,8 @@ const AppProvider = ({ children }) => {
             fetchSingleMovie,
             fetchCast,
             fetchTrendingMovies,
-            fetchUpcomingMovies 
+            fetchUpcomingMovies,
+            pushToFavourite
         }}>
             {children}
         </AppContext.Provider>

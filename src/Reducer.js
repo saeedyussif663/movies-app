@@ -71,6 +71,21 @@ export const reducer = (state, action) => {
             upcomingMovies: [...action.movies]
         }
     }
-    
+
+    if (action.type === "SETFAVOURITE") {
+        let newFavouriteArr = [...state.favouriteMovies, { ...action.movies }]
+        return {
+            ...state,
+            favouriteMovies: newFavouriteArr,
+        }
+    }
+
+    if (action.type === "REMOVEFAVOURITE") {
+            const newFavouriteMovies = state.favouriteMovies.filter(movie => movie.id !== action.data.id);
+            return {
+                ...state,
+                favouriteMovies: newFavouriteMovies,
+            };
+    }
     return state
 }
