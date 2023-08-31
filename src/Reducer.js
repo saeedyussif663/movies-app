@@ -64,6 +64,13 @@ export const reducer = (state, action) => {
             trendingMovies: [...action.movies]
         }
     }
+
+    if (action.type === "SETUPCOMIMGMOVIE") {
+        return {
+            ...state,
+            upcomingMovies: [...action.movies]
+        }
+    }
     
     return state
 }

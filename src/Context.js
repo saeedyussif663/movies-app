@@ -14,6 +14,7 @@ const initialState = {
     moviesGenres: [],
     singleMovie: {},
     trendingMovies: [],
+    upcomingMovies: [],
     casts: [],
 }
 
@@ -69,6 +70,14 @@ const AppProvider = ({ children }) => {
         dispatch({ type: "REMOVELOADER" });
     }
 
+    const fetchUpcomingMovies = async () => {
+        dispatch({ type: "SETLELOADER" });
+        const response = await fetch("https://api.themoviedb.org/3/movie/upcoming?api_key=837ddd7bf3645dab7c2e0b4d81c44b22");
+        const data = await response.json();
+        dispatch({type: "SETUPCOMIMGMOVIE", movies: data.results})
+        dispatch({ type: "REMOVELOADER" });
+    }
+
     useEffect(() => {
         fetchGenres();
         fetchDefaultMovies();
@@ -85,7 +94,8 @@ const AppProvider = ({ children }) => {
             recieveGenre,
             fetchSingleMovie,
             fetchCast,
-            fetchTrendingMovies
+            fetchTrendingMovies,
+            fetchUpcomingMovies 
         }}>
             {children}
         </AppContext.Provider>
