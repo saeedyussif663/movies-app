@@ -517,6 +517,50 @@ display: flex;
   flex-wrap: wrap;
 }
 
+.login-section {
+  margin: auto auto;
+  height: 100vh;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.login-section form {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  margin-left: 70px;
+}
+
+.login-section  label {
+  display: block;
+  color: white;
+  font-size: 1.5rem;
+  margin: 20px 0;
+}
+
+.login-section input {
+  height: 40px;
+  width: 40%;
+  border-radius: 20px;
+  padding: 10px;
+  text-align: center
+}
+
+.login-section input:focus {
+  outline: none;
+}
+
+.login-section button {
+  margin-top: 20px;
+  padding: 10px 30px;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+}
+
 @media screen and (max-width: 550px) {
       .container {
         display: flex;
@@ -642,6 +686,21 @@ display: flex;
 
 .lds-spinner {
   align-items: center;
+}
+
+/* Login */
+.login-section {
+  width: 90%;
+  margin: 0 auto;
+}
+
+
+.login-section form {
+  margin-left: 0px;
+}
+
+.login-section input {
+  width: 70%;
 }
 
 }

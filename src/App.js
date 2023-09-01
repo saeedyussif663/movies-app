@@ -8,6 +8,7 @@ import SingleMovie from "./Components/SingleMovie";
 import Trending from "./Components/Trending";
 import Upcoming from "./Components/Upcoming";
 import Favourite from "./Components/Favourite";
+import Login from "./Components/Login";
 
 
 
@@ -23,7 +24,7 @@ function App() {
         <Route path="/upcoming" element={<Upcoming/>} />
         <Route path="/trending" element={<Trending/>} />
         <Route path="/favourite" element={<Favourite/>} />
-        <Route path="/login" element={<h1>login</h1>} />
+        <Route path="/login" element={<Login/>} />
         <Route path="/moviedetail/:id" element={<SingleMovie/>} />
       </Routes>
     </section>

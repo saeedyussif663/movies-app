@@ -8,6 +8,7 @@ const modalStatus = window.innerWidth > 770 ? true : false;
 let favourite;
 
 const initialState = {
+    user: null,
     isModalShowing: modalStatus,
     isLoading: false,
     genres: [],
@@ -30,6 +31,10 @@ const AppProvider = ({ children }) => {
         } else {
             localStorage.setItem("favourite", JSON.stringify([]))
         }
+    }
+
+    const setDetails = (name) => {
+        dispatch({type: "SETUSERNAME", name})
     }
 
     const fetchGenres = async () => {
@@ -127,7 +132,8 @@ const AppProvider = ({ children }) => {
             fetchCast,
             fetchTrendingMovies,
             fetchUpcomingMovies,
-            pushToFavourite
+            pushToFavourite,
+            setDetails
         }}>
             {children}
         </AppContext.Provider>

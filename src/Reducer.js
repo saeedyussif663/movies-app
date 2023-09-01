@@ -7,6 +7,13 @@ export const reducer = (state, action) => {
             isModalShowing: !state.isModalShowing
        }
     }
+
+    if (action.type === "SETUSERNAME") {
+        return {
+            ...state, 
+            user: action.name
+        }
+    }
     
     if (action.type === "SETLOADER") {
         return {
