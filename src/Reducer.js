@@ -74,6 +74,7 @@ export const reducer = (state, action) => {
 
     if (action.type === "SETFAVOURITE") {
         let newFavouriteArr = [...state.favouriteMovies, { ...action.movies }]
+        localStorage.setItem("favourite", JSON.stringify(newFavouriteArr))
         return {
             ...state,
             favouriteMovies: newFavouriteArr,
@@ -81,11 +82,19 @@ export const reducer = (state, action) => {
     }
 
     if (action.type === "REMOVEFAVOURITE") {
-            const newFavouriteMovies = state.favouriteMovies.filter(movie => movie.id !== action.data.id);
+        const newFavouriteMovies = state.favouriteMovies.filter(movie => movie.id !== action.data.id);
+        localStorage.setItem("favourite", JSON.stringify(newFavouriteMovies))
             return {
                 ...state,
                 favouriteMovies: newFavouriteMovies,
             };
+    }
+
+    if (action.type === "SETFAVOURITEWITHLOCALSTORAGE") {
+        return {
+            ...state,
+            favouriteMovies: JSON.parse(action.favourite)
+        }
     }
     return state
 }

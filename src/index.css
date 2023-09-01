@@ -483,7 +483,6 @@ display: flex;
   justify-content: center;
   flex-direction: row;
   flex-wrap: wrap;
-  margin: 10px 2px 10px 40px;
 }
 
 /* Upcoming Container */
@@ -497,6 +496,25 @@ display: flex;
    color: rgb(147 197 253 );
     margin: 20px 0;
     font-size: 1.8rem;
+}
+
+/* Favourite section */
+.favourite-section {
+  width: 85%;
+  margin-left: 15%;
+}
+
+.favourite-section  h1 {
+    text-align: center;
+    color: rgb(147 197 253 );
+    margin: 20px 0;
+    font-size: 1.8rem;
+}
+
+.favourite-movies {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
 @media screen and (max-width: 550px) {
@@ -604,18 +622,26 @@ display: flex;
 
   /* Trending container */
   .trending-container {
-  width: 100%;
-  margin-left: 0;
+  width: 90%;
+  margin: 0 auto;
 }
 
-.trending-movies {
-  margin: 0;
-}
 
 /* upcoming movies */ 
 .upcoming-container {
   width: 90%;
-  margin: 0px 5%;
+  margin: 0 auto;
+}
+ 
+/* favourite movies */ 
+.favourite-section {
+  width: 90%;
+  margin: 0 auto;
+}
+
+
+.lds-spinner {
+  align-items: center;
 }
 
 }

@@ -4,7 +4,8 @@ import { reducer } from "./Reducer";
 
 const AppContext = createContext();
 
-const modalStatus = window.innerWidth > 770 ? true : false
+const modalStatus = window.innerWidth > 770 ? true : false;
+let favourite;
 
 const initialState = {
     isModalShowing: modalStatus,
@@ -21,6 +22,15 @@ const initialState = {
 
 const AppProvider = ({ children }) => {
     const [state, dispatch] = useReducer(reducer, initialState);
+
+    const getItemsFromLocalStorage = ()  =>{
+         favourite = localStorage.getItem("favourite");
+        if (favourite) {
+           dispatch({type: "SETFAVOURITEWITHLOCALSTORAGE", favourite})
+        } else {
+            localStorage.setItem("favourite", JSON.stringify([]))
+        }
+    }
 
     const fetchGenres = async () => {
         dispatch({ type: "SETLOADER" });
@@ -104,6 +114,7 @@ const AppProvider = ({ children }) => {
     useEffect(() => {
         fetchGenres();
         fetchDefaultMovies();
+        getItemsFromLocalStorage();
     }, [])
 
 

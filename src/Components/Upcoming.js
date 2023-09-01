@@ -16,7 +16,7 @@ const Upcoming = () => {
                     {state.upcomingMovies.map((movie) => {
                     return <Movie key={movie.id} {...movie} />
                 })}
-               </div>
+            </div>
         </section>
     )
 }

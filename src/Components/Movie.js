@@ -1,10 +1,13 @@
 import { useNavigate } from "react-router-dom";
 
 import { useGlobalContext } from "../Context";
+import { useEffect, useState } from "react";
 
-const Movie = ({ id, title, poster_path, vote_average}) => {
-    const {pushToFavourite} = useGlobalContext()
-    const navigate = useNavigate()
+const Movie = ({ id, title, poster_path, vote_average }) => {
+    const [iconClass, setIconClass] = useState("")
+
+    const {pushToFavourite, state} = useGlobalContext()
+    const navigate = useNavigate();
     
     const navigateToSingleMovie = () => {
             navigate(`/moviedetail/${id}`)
@@ -22,11 +25,27 @@ const Movie = ({ id, title, poster_path, vote_average}) => {
       pushToFavourite(id)
     }
     
+ const setFavouriteIcon = () => {
+     const favoriteMovie = state.favouriteMovies.find((element) => element.id === id);
+
+    if  (favoriteMovie) {
+        setIconClass("fa-solid fa-star");
+    } else {
+        setIconClass("fa-regular fa-star")
+    }
+};
+
+
+
+    useEffect(() => {
+        setFavouriteIcon();
+    }, [])
+
     return (
         <div className="movie-container" >
             <img src={`https://image.tmdb.org/t/p/w500${poster_path}`} alt={title} onClick={navigateToSingleMovie}/>
             <div className="favourite-container">
-                <i className="fa-regular fa-star" onClick={favouriteClick}></i>
+                <i className={iconClass} onClick={favouriteClick}></i>
             </div> 
             <div className="movie-details">
             <h1>{title}</h1>

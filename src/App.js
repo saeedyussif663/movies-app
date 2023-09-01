@@ -7,6 +7,7 @@ import MobileNav from "./Components/MobileNav";
 import SingleMovie from "./Components/SingleMovie";
 import Trending from "./Components/Trending";
 import Upcoming from "./Components/Upcoming";
+import Favourite from "./Components/Favourite";
 
 
 
@@ -21,7 +22,7 @@ function App() {
         <Route path="/" element={<Home/>} />
         <Route path="/upcoming" element={<Upcoming/>} />
         <Route path="/trending" element={<Trending/>} />
-        <Route path="/favourite" element={<h1>favourite</h1>} />
+        <Route path="/favourite" element={<Favourite/>} />
         <Route path="/login" element={<h1>login</h1>} />
         <Route path="/moviedetail/:id" element={<SingleMovie/>} />
       </Routes>
