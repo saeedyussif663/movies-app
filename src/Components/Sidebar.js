@@ -1,6 +1,10 @@
-import { Link, NavLink } from "react-router-dom"
+import { Link, NavLink } from "react-router-dom";
+
+import { useGlobalContext } from "../Context";
 
 const SideBar = () => {
+
+    const {state, logout} = useGlobalContext()
 
     return (
         <section className="sidebar-container" >
@@ -19,7 +23,12 @@ const SideBar = () => {
                 </NavLink>
             </div>
             <div className="login">
-                <Link to="login">Log in</Link>
+                {state.user ? 
+                <>
+                    <div className="user"><i className="fa-solid fa-user"></i>{state.user}</div>
+                    <button className="log-out" onClick={logout}>Log out</button>
+                </>        :
+                <Link to="login">Log in</Link>}
             </div>
         </section>
     )

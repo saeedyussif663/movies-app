@@ -9,9 +9,17 @@ export const reducer = (state, action) => {
     }
 
     if (action.type === "SETUSERNAME") {
+        localStorage.setItem("user", JSON.stringify(action.name))
         return {
             ...state, 
             user: action.name
+        }
+    }
+
+    if (action.type === "LOGOUT") {
+        return {
+            ...state,
+            user: null
         }
     }
     
@@ -101,6 +109,13 @@ export const reducer = (state, action) => {
         return {
             ...state,
             favouriteMovies: JSON.parse(action.favourite)
+        }
+    }
+
+    if (action.type === "SETUSERWITHLOCALSTORAGE") {
+        return {
+            ...state,
+            user: JSON.parse(action.user)
         }
     }
     return state

@@ -6,6 +6,7 @@ const AppContext = createContext();
 
 const modalStatus = window.innerWidth > 770 ? true : false;
 let favourite;
+let user;
 
 const initialState = {
     user: null,
@@ -30,6 +31,15 @@ const AppProvider = ({ children }) => {
            dispatch({type: "SETFAVOURITEWITHLOCALSTORAGE", favourite})
         } else {
             localStorage.setItem("favourite", JSON.stringify([]))
+        }
+    }
+
+    const getUserFromLocalStorage = () => {
+        user = localStorage.getItem("user");
+        if (user) {
+            dispatch({type: "SETUSERWITHLOCALSTORAGE", user})
+        } else {
+            localStorage.setItem("user", JSON.stringify(null))
         }
     }
 
@@ -116,10 +126,15 @@ const AppProvider = ({ children }) => {
         dispatch({type: "TOGGLEMODAL"})
     }
 
+    const logout = () => {
+        dispatch({type: "LOGOUT"})
+    }
+
     useEffect(() => {
         fetchGenres();
         fetchDefaultMovies();
         getItemsFromLocalStorage();
+        getUserFromLocalStorage();
     }, [])
 
 
@@ -133,7 +148,8 @@ const AppProvider = ({ children }) => {
             fetchTrendingMovies,
             fetchUpcomingMovies,
             pushToFavourite,
-            setDetails
+            setDetails,
+            logout
         }}>
             {children}
         </AppContext.Provider>

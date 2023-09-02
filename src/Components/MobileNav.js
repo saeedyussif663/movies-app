@@ -4,7 +4,7 @@ import { useGlobalContext } from "../Context";
 
 const MobileNav = () => {
 
-    const { state, toggleModal } = useGlobalContext()
+    const { state, toggleModal, logout } = useGlobalContext()
     
     const mobileNavPosition = state.isModalShowing ? "0px" : "-1000px"
     return (
@@ -24,7 +24,12 @@ const MobileNav = () => {
                 </NavLink>
             </div>
             <div className="mobile-login">
-                <NavLink to="login"  onClick={toggleModal}>Log in</NavLink > 
+                {state.user ? 
+                <>
+                    <div className="user"><i className="fa-solid fa-user"></i>{state.user}</div>
+                    <button className="log-out" onClick={logout}>Log out</button>
+                </>        :
+                <NavLink to="login">Log in</NavLink>}
             </div>
         </section>
         )
