@@ -25,7 +25,7 @@ const SingleMovie = () => {
             <section className="singlemovie-container">
                 <div className="img-container">
                     <img src={`https://image.tmdb.org/t/p/original/${backdrop_path}`} alt={title} />
-                    <i className="fa-light fa-arrow-left" onClick={navigateToHome}></i>
+                    <i className="fa-solid fa-arrow-left" onClick={navigateToHome}></i>
                 <h1>{ title }</h1>
             </div>
             <div className="sub-deatils-container">

@@ -1,22 +1,17 @@
-
 import { useGlobalContext } from "../Context"
 import Loader from "../Loader";
+import Form from "./Form";
 import Movie from "./Movie";
 
 
 
 const Home = () => {
     const { state, recieveGenre} = useGlobalContext();
-    const { genres, isLoading, moviesGenres , genreToDisplay } = state;
-
-
+    const { genres, isLoading, moviesGenres, genreToDisplay } = state;
+    
     return (
         <main className="home-container">
-            <section className="search-container">
-                <form>
-                    <input type="text" placeholder="Search for Movies" />
-                </form>
-            </section>
+            <Form/>
             <section className="genres-section">
                 <h1>Genres</h1>
                 <div className="genres-container">

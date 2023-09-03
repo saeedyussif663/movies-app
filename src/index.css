@@ -146,6 +146,7 @@ flex-direction: column;
 .search-container > form {
  margin: 60px;
  width: 50%;
+ position: relative
 }
 
 .search-container form > input {
@@ -160,6 +161,14 @@ flex-direction: column;
 
 .search-container form > input:focus {
   outline: none;
+}
+
+.search-container form > i {
+  position: absolute;
+  top: 18px;
+  right: 20px;
+  font-size: 1.5rem;
+  cursor: pointer;
 }
 
 /* Loader  */
@@ -583,6 +592,19 @@ flex-direction: column;
   border-radius: 20px;
   border: none;
   cursor: pointer;
+}
+
+/* Search Movie Container */
+.search-movie-container {
+  width: 85%;
+  margin-left: 15%;
+}
+
+.search-movie-container > h1 {
+    text-align: center;
+    color: rgb(147 197 253 );
+    margin: 20px 0;
+    font-size: 1.8rem;  
 }
 
 @media screen and (max-width: 550px) {

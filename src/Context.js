@@ -20,6 +20,7 @@ const initialState = {
     upcomingMovies: [],
     favouriteMovies: [],
     casts: [],
+    searchedMovies: []
 }
 
 const AppProvider = ({ children }) => {
@@ -122,6 +123,12 @@ const AppProvider = ({ children }) => {
         }
     }
 
+    const searchHandler = async (searchTerm) => {
+        const response = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=837ddd7bf3645dab7c2e0b4d81c44b22&query=${searchTerm}&`)
+        const data = await response.json()
+        dispatch({type: "SETSEARCHEDMOVIES", movies: data.results})
+    }
+
     const toggleModal = () => {
         dispatch({type: "TOGGLEMODAL"})
     }
@@ -149,7 +156,8 @@ const AppProvider = ({ children }) => {
             fetchUpcomingMovies,
             pushToFavourite,
             setDetails,
-            logout
+            logout,
+            searchHandler
         }}>
             {children}
         </AppContext.Provider>

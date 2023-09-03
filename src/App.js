@@ -9,6 +9,7 @@ import Trending from "./Components/Trending";
 import Upcoming from "./Components/Upcoming";
 import Favourite from "./Components/Favourite";
 import Login from "./Components/Login";
+import SearchMovie from "./Components/SearchMovie"
 
 
 
@@ -26,6 +27,7 @@ function App() {
         <Route path="/favourite" element={<Favourite/>} />
         <Route path="/login" element={<Login/>} />
         <Route path="/moviedetail/:id" element={<SingleMovie/>} />
+        <Route path="/search/:searchTerm" element={<SearchMovie/>} />
       </Routes>
     </section>
   );

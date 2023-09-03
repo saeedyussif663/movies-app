@@ -17,6 +17,7 @@ export const reducer = (state, action) => {
     }
 
     if (action.type === "LOGOUT") {
+        localStorage.setItem("user", JSON.stringify(null))
         return {
             ...state,
             user: null
@@ -116,6 +117,13 @@ export const reducer = (state, action) => {
         return {
             ...state,
             user: JSON.parse(action.user)
+        }
+    }
+
+    if (action.type === "SETSEARCHEDMOVIES") {
+        return {
+            ...state,
+            searchedMovies: action.movies
         }
     }
     return state
