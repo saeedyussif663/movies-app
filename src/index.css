@@ -534,10 +534,10 @@ flex-direction: column;
 /* Favourite section */
 .favourite-section {
   width: 85%;
-  margin-left: 15%;
+  margin-left: 15%; 
 }
 
-.favourite-section  h1 {
+.favourite-section >  h1 {
     text-align: center;
     color: rgb(147 197 253 );
     margin: 20px 0;

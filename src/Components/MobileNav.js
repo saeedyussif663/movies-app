@@ -29,7 +29,7 @@ const MobileNav = () => {
                     <div className="user"><i className="fa-solid fa-user"></i>{state.user}</div>
                     <button className="log-out" onClick={logout}>Log out</button>
                 </>        :
-                <NavLink to="login">Log in</NavLink>}
+                <NavLink to="login" onClick={toggleModal}>Log in</NavLink>}
             </div>
         </section>
         )

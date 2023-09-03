@@ -8,6 +8,8 @@ const modalStatus = window.innerWidth > 770 ? true : false;
 let favourite;
 let user;
 
+const api_key = "0c74746904fc64621ecfac4cea8e4c77"
+
 const initialState = {
     user: null,
     isModalShowing: modalStatus,
@@ -50,7 +52,7 @@ const AppProvider = ({ children }) => {
 
     const fetchGenres = async () => {
         dispatch({ type: "SETLOADER" });
-        const response = await fetch("https://api.themoviedb.org/3/genre/movie/list?api_key=837ddd7bf3645dab7c2e0b4d81c44b22")
+        const response = await fetch(`https://api.themoviedb.org/3/genre/movie/list?api_key=${api_key}`)
         const data = await response.json();
         dispatch({ type: "SETGENRES", data: data.genres });
         dispatch({ type: "REMOVELOADER" });
@@ -58,7 +60,7 @@ const AppProvider = ({ children }) => {
 
     const fetchSingleMovie = async (id) => {
         dispatch({ type: "SETLOADER" });
-        const response = await fetch (`https://api.themoviedb.org/3/movie/${id}?api_key=837ddd7bf3645dab7c2e0b4d81c44b22`)
+        const response = await fetch (`https://api.themoviedb.org/3/movie/${id}?api_key=${api_key}`)
         const data = await response.json();
         dispatch({type: "SINGLEMOVIE", data})
         dispatch({ type: "REMOVELOADER" });
@@ -66,7 +68,7 @@ const AppProvider = ({ children }) => {
 
     const fetchCast = async (id) => {
         dispatch({ type: "SETLOADER" });
-        const response = await fetch (`https://api.themoviedb.org/3/movie/${id}/credits?api_key=837ddd7bf3645dab7c2e0b4d81c44b22`)
+        const response = await fetch (`https://api.themoviedb.org/3/movie/${id}/credits?api_key=${api_key}`)
         const data = await response.json();
         dispatch({type: "SETCAST", cast: data.cast})
         dispatch({ type: "REMOVELOADER" });
@@ -74,7 +76,7 @@ const AppProvider = ({ children }) => {
 
     const fetchDefaultMovies = async () => {
         dispatch({ type: "SETELOADER" });
-        const response = await fetch(`https://api.themoviedb.org/3/discover/movie?with_genres=${state.genreToDisplay}&api_key=837ddd7bf3645dab7c2e0b4d81c44b22`);
+        const response = await fetch(`https://api.themoviedb.org/3/discover/movie?with_genres=${state.genreToDisplay}&api_key=${api_key}`);
         const data = await response.json();
         dispatch({ type: "SETMOVIESGENRES", movies: data.results });
         dispatch({ type: "REMOVELOADER" });
@@ -83,7 +85,7 @@ const AppProvider = ({ children }) => {
     const recieveGenre = async (genreNum) => {
         dispatch({ type: "CHANGEGENRETODISPLAY", genreNum });
         dispatch({ type: "SETLELOADER" });
-        const response = await fetch(`https://api.themoviedb.org/3/discover/movie?with_genres=${genreNum}&api_key=837ddd7bf3645dab7c2e0b4d81c44b22`);
+        const response = await fetch(`https://api.themoviedb.org/3/discover/movie?with_genres=${genreNum}&api_key=${api_key}`);
         const data =  await response.json();
         dispatch({ type: "SETMOVIESGENRES", movies: data.results });
         dispatch({ type: "REMOVELOADER" });
@@ -91,7 +93,7 @@ const AppProvider = ({ children }) => {
 
     const fetchTrendingMovies = async () => {
         dispatch({ type: "SETLELOADER" });
-        const response = await fetch("https://api.themoviedb.org/3/trending/movie/day?api_key=837ddd7bf3645dab7c2e0b4d81c44b22");
+        const response = await fetch(`https://api.themoviedb.org/3/trending/movie/day?api_key=${api_key}`);
         const data = await response.json();
         dispatch({type: "SETTRENDINGMOVIE", movies: data.results})
         dispatch({ type: "REMOVELOADER" });
@@ -99,14 +101,14 @@ const AppProvider = ({ children }) => {
 
     const fetchUpcomingMovies = async () => {
         dispatch({ type: "SETLELOADER" });
-        const response = await fetch("https://api.themoviedb.org/3/movie/upcoming?api_key=837ddd7bf3645dab7c2e0b4d81c44b22");
+        const response = await fetch(`https://api.themoviedb.org/3/movie/upcoming?api_key=${api_key}`);
         const data = await response.json();
         dispatch({type: "SETUPCOMIMGMOVIE", movies: data.results})
         dispatch({ type: "REMOVELOADER" });
     }
 
     const pushToFavourite = async (id) => {
-        const response = await fetch (`https://api.themoviedb.org/3/movie/${id}?api_key=837ddd7bf3645dab7c2e0b4d81c44b22`)
+        const response = await fetch (`https://api.themoviedb.org/3/movie/${id}?api_key=${api_key}`)
         const data = await response.json();
         if (state.favouriteMovies.length === 0) {
             dispatch({type: "SETFAVOURITE", movies: data})
@@ -124,7 +126,7 @@ const AppProvider = ({ children }) => {
     }
 
     const searchHandler = async (searchTerm) => {
-        const response = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=837ddd7bf3645dab7c2e0b4d81c44b22&query=${searchTerm}&`)
+        const response = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=${api_key}&query=${searchTerm}&`)
         const data = await response.json()
         dispatch({type: "SETSEARCHEDMOVIES", movies: data.results})
     }
