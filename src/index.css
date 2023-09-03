@@ -749,4 +749,11 @@ flex-direction: column;
   width: 70%;
 }
 
+.search-movie-container {
+  width: 100%;
+  margin: 0 auto;
+}
+
+
+
 }
